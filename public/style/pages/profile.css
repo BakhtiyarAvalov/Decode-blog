@@ -1,0 +1,76 @@
+.profile{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 40px;
+    flex-direction: column;
+}
+.profile-info{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.profile-img{
+    width: 50%;
+}
+.profile-img img{
+    width: 100%;
+    margin-bottom: 10px;
+}
+.profile-info{
+    width: 80%;
+}
+.profile-info p{
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.profile-info p span{
+    font-size: 600;
+}
+.profile-info button{
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 500;
+    font-size: 16px;
+}
+.edit-btn{
+    background: #00A2DC;
+    margin-bottom: 10px;
+}
+.main-report-btn button{
+    margin-top: 5px;
+}
+.main-report-btn{
+    position: absolute;
+    display: none;
+    flex-direction: column;
+    top: 45px;
+    z-index: 11;
+    border: 1px solid #00000034;
+}
+.main-report-menu{
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+    cursor: pointer;
+    
+}
+.main-report-menu button{
+    border: none;
+    background: #fff;
+    font-size: 17px;
+    font-weight: 600;
+}
+.main-report-menu:hover .main-report-btn{
+    display: flex;
+}
+.main-report-btn button:hover{
+    color: #ff0000;
+}

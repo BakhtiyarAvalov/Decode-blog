@@ -1,0 +1,29 @@
+.comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.comment-item {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+}
+.comment h4{
+    font-size: 24px;
+    font-weight: 400;
+    padding: 20px 0;
+}
+.comment-item img{
+    margin-right: 20px;
+}
+.registration-link{
+
+    width: 100%;
+    padding: 0px 20px 25px;
+    margin-top: 10px;
+    background: #FFF3CD;
+    color: #856404;
+}
+.registration-link a{
+    color: #00A2DC;
+}

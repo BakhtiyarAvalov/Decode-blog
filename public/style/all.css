@@ -1,0 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap');
+@import url('vendor/reset.css');
+@import url('components/heder.css');
+@import url('vendor/same.css');
+@import url('pages/index.css');
+@import url('components/form.css');
+@import url('pages/profile.css');
+@import url('pages/admin.css');
+@import url('pages/mainPage.css');
+@import url('pages/users.css');

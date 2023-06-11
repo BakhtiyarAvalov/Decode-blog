@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%-include('partials/head.ejs')%>
+    <title>Document</title>
+</head>
+<body>
+    <%-include('partials/header.ejs')%>
+    <div class="container">
+        <div class="main">
+            <form action="" class="form">
+                <h3>Редактирование</h3>
+                <fieldset class="fieldset">
+                    <label for="">Название блога</label>
+                    <input type="text" placeholder="Введите название блога" name="titleBlog">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <label for="">Категория блога</label>
+                    <input type="text" placeholder="Введите категорию блога" name="categori">
+                </fieldset>
+                <fieldset class="fieldset-img">
+                    <label for="">Выберите картинку</label>
+                    <input type="file"  name="img">
+                </fieldset>
+                <fieldset class="fieldset-img fieldset-img-last-child">
+                    <label for="">Описание блога</label>
+                    <input type="text" placeholder="Введите описание блога" name="content">
+                </fieldset>
+                <fieldset class="fieldset">  
+                    <button type="submit">Сохранить</button>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
