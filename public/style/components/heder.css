@@ -29,14 +29,14 @@ header{
     align-items: center;
     background-color: #e7e7e7;
     border-radius: 5px;
-    width: 50%;
+    width: 60%;
 }
 .head-search input{
     padding: 10px 15px;
     border: none;
     background-color: transparent;
     outline: none;
-    width: 95%;
+    width: 100%;
     color: #fff;
 }
 .head-search button{
@@ -57,4 +57,10 @@ header{
     text-decoration: none;
     color: #e7e7e7;
     font-size: 16px;
+    border-radius: 5px;
+}
+.head-search-btn{
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
 }

@@ -5,13 +5,17 @@
     <title>Document</title>
 </head>
 <body>
-    <%-include('partials/header.ejs')%>
+    <%-include('partials/headerProfile.ejs')%>
     <div class="container">
         <div class="main">
             <div class="main-content">
                 <div class="main-content-header">
-                    <h1>Блоги по программированию</h1>
-                    <p>Популярные и лучшие публикации по программированию для начинающих и профессиональных программистов и IT-специалистов.</p>
+                    <div class="main-report">
+                        <h3>Мои блоги</h3>
+                        <div class="new-blog-btn">
+                            <a href="/new"><button>Новый блог</button></a>
+                        </div>
+                    </div>
                     <img src="/images/Manager.png" alt="">
                 </div>
                 <div class="main-report">

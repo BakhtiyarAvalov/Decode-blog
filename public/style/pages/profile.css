@@ -74,3 +74,13 @@
 .main-report-btn button:hover{
     color: #ff0000;
 }
+.new-blog-btn button{
+    background: #00A2DC;
+    border: none;
+    cursor: pointer;
+    font-size: 17px;
+    font-weight: 600;
+    padding: 10px 17px;
+    border-radius: 5px;
+    color: #fff;
+}
