@@ -89,17 +89,9 @@
                 <button id="comment-button">Отправить</button>
             </div>  
             <div class="categories">
-                <h3>Категории</h3>
-                <a href="">Прогнозый в IT</a>
-                <a href="">Веб-разработка</a>
-                <a href="">Мобильная разработка</a>
-                <a href="">Фриланс</a>
-                <a href="">Алгоритмы</a>
-                <a href="">тестирование IT системы</a>
-                <a href="">Разработка игр</a>
-                <a href="">Дизайн юзабилити</a>
-                <a href="">Искуственный интелект</a>
-                <a href="">Машинное обучение</a>
+                <%category.forEach(categoty =>{ %>
+                    <a href="/<%=category.kay%>"></a><%=category.name%></a>
+                <%})%>
             </div>
         </div>    
     </div>
