@@ -1,8 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const categories = require('../Categories/Categories');
+const Categories = require('../Categories/Categories');
 
-router.get('/', (req, res)=>{
-    res.render("index.ejs")
+router.get('/', async(req, res)=>{
+    const allCaregoties = await Categories.find()
+    res.render("index.ejs", {category: allCaregoties})
 }) 
 
 router.get('/login', (req, res)=>{
@@ -21,16 +24,19 @@ router.get('/admin', (req, res)=>{
     res.render("adminProfile.ejs")
 })
 
-router.get('/new', (req, res)=>{
-    res.render("newBlog.ejs")
+router.get('/new', async(req, res)=>{
+    const allCaregoties = await categories.find()
+    res.render("newBlog.ejs", {category: allCaregoties})
 })
 
-router.get('/edit', (req, res)=>{
-    res.render("editBlog.ejs")
+router.get('/edit', async(req, res)=>{
+    const allCaregoties = await categories.find()
+    res.render("editBlog.ejs", {category: allCaregoties})
 })
 
-router.get('/mainPage', (req, res)=>{
-    res.render("mainPage.ejs")
+router.get('/mainPage', async(req, res)=>{
+    const allCaregoties = await categories.find()
+    res.render("mainPage.ejs", {category: allCaregoties})
 })
 
 router.get('/user', (req, res)=>{

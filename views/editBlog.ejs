@@ -12,7 +12,11 @@
                 <h3>Редактирование</h3>
                 <fieldset class="fieldset">
                     <label for="">Название блога</label>
-                    <input type="text" placeholder="Введите название блога" name="titleBlog">
+                    <select name="" id="">
+                        <%category.forEach(categoty =>{ %>
+                            <option value="<%=category.name%>"></option>
+                        <%})%>
+                    </select>
                 </fieldset>
                 <fieldset class="fieldset">
                     <label for="">Категория блога</label>

@@ -16,7 +16,11 @@
                 </fieldset>
                 <fieldset class="fieldset">
                     <label for="">Категория блога</label>
-                    <input type="text" placeholder="Введите категорию блога" name="categori">
+                    <select name="" id="">
+                        <%category.forEach(categoty =>{ %>
+                            <option value="<%=category.name%>"></option>
+                        <%})%>
+                    </select>
                 </fieldset>
                 <fieldset class="fieldset-img">
                     <label for="">Выберите картинку</label>
