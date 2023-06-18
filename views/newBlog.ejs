@@ -17,8 +17,8 @@
                 <fieldset class="fieldset">
                     <label for="">Категория блога</label>
                     <select name="" id="">
-                        <%category.forEach(category =>{ %>
-                            <option value=""><%=category.name%></option>
+                        <%category.forEach(categ =>{ %>
+                            <option value=""><%=categ.name%></option>
                         <%})%>
                     </select>
                 </fieldset>
@@ -27,8 +27,8 @@
                     <input type="file"  name="img">
                 </fieldset>
                 <fieldset class="fieldset-img fieldset-img-last-child">
-                    <label for="">Описание блога</label>
-                    <input type="text" placeholder="Введите описание блога" name="content">
+                    <label for="" >Описание блога</label>
+                    <input  type="text" placeholder="Введите описание блога" name="content">
                 </fieldset>
                 <fieldset class="fieldset">  
                     <button type="submit">Добавить</button>

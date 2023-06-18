@@ -79,3 +79,22 @@
     font-size: 28px;
     font-weight: 600;
 }
+
+/* последующим надо удалить */
+.link{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    width: 70%;
+}
+
+.link a{
+    background: #007BFF;
+    padding: 7px 15px;
+    width: 100%;
+    height: 30px;
+    margin-left: 15px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+}

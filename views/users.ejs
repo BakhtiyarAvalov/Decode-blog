@@ -16,16 +16,6 @@
                 </div>
                 <div class="main-report">
                     <h3>Обзор Report Manager от Webix</h3>
-                    <div class="main-report-menu">
-                        <p>
-                            <img src="/images/icons/dot.png" alt="">
-                            Еще
-                        </p>
-                        <div class="main-report-btn">
-                            <a href="/edit"><button>Редактировать</button></a>
-                            <button>Удалить</button>
-                        </div>
-                    </div>
                 </div>
                 <p> Осень 2020 года стала плодотворным временем для специалистов Webix.</p>
                 <p>Команда Webix выпустила восьмую версию библиотеки пользовательского интерфейса Webix с двумя новыми комплексными виджетами. Первый - зто Scheduler, о котором мы подробно говорили ранее. Второй виджет - это Gantt chart в JavaScript. Подробную информацию об этом виджете Вы можете найти в статье.</p> 
@@ -87,13 +77,14 @@
                     <input type="text" placeholder="Введи текст комментария">
                 </div>
                 <button id="comment-button">Отправить</button>
-            </div>  
-            <div class="categories">
-                <%category.forEach(categoty =>{ %>
-                    <a href="/<%=category.kay%>"></a><%=category.name%></a>
-                <%})%>
             </div>
-        </div>    
-    </div>
+            <div class="categories">
+                <h3>Категории</h3>
+                <%category.forEach(categ =>{ %>
+                    <a href="/<%=categ.key%>"><%=categ.name%></a>
+                <%})%>
+            </div> 
+        </div> 
+    </div>    
 </body>
 </html>

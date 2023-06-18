@@ -7,6 +7,16 @@
 <body>
     <%-include('partials/header.ejs')%>
     <div class="container">
+        <div class="link">
+            <a href="/login">Логин</a>
+            <a href="/register">Регистрация</a>
+            <a href="/profile">Профайл</a>
+            <a href="/admin">Админ</a>
+            <a href="/new">Новый блог</a>
+            <a href="/edit">Редактирование блога</a>
+            <a href="/detailPage">Детальная страница</a>
+            <a href="/user">Пользователь</a>
+        </div>
         <div class="main">
             <div class="main-content">
                 <div class="main-content-header">
@@ -76,11 +86,12 @@
             </div>  
             <div class="categories">
                 <h3>Категории</h3>
-                <%category.forEach(categoty =>{ %>
-                <a href="/<%=category.kay%>"></a><%=category.key%></a>
+                <%category.forEach(categ =>{ %>
+                    <a href="/<%=categ.key%>"><%=categ.name%></a>
                 <%})%>
             </div>
         </div>
     </div>
+
 </body>
 </html>

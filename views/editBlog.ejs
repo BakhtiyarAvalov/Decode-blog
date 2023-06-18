@@ -12,15 +12,15 @@
                 <h3>Редактирование</h3>
                 <fieldset class="fieldset">
                     <label for="">Название блога</label>
+                    <input type="text" placeholder="Введите название блога" name="categori">
+                </fieldset>
+                <fieldset class="fieldset">
+                    <label for="">Название блога</label>
                     <select name="" id="">
                         <%category.forEach(categ =>{ %>
                             <option value=""><%=categ.name%></option>
                         <%})%>
                     </select>
-                </fieldset>
-                <fieldset class="fieldset">
-                    <label for="">Категория блога</label>
-                    <input type="text" placeholder="Введите категорию блога" name="categori">
                 </fieldset>
                 <fieldset class="fieldset-img">
                     <label for="">Выберите картинку</label>

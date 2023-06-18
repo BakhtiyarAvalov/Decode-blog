@@ -34,12 +34,13 @@ router.get('/edit', async(req, res)=>{
     res.render("editBlog.ejs", {category: allCaregoties})
 })
 
-router.get('/mainPage', async(req, res)=>{
+router.get('/detailPage', async(req, res)=>{
     const allCaregoties = await categories.find()
-    res.render("mainPage.ejs", {category: allCaregoties})
+    res.render("detailPage.ejs", {category: allCaregoties})
 })
 
-router.get('/user', (req, res)=>{
-    res.render("users.ejs")
+router.get('/user', async(req, res)=>{
+    const allCaregoties = await categories.find()
+    res.render("users.ejs", {category: allCaregoties})
 })
 module.exports = router;
