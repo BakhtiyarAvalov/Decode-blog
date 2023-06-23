@@ -18,10 +18,10 @@
                         <img src="/images/icons/Avatar.png" alt="">
                     </div>
                     <div class="profile-info">
-                        <p><span>Полное имя:</span> Елнур Сеитжанов</p>
-                        <p><span>E-mail:</span>   Yelnur_Seitjanov@Decode.com</p>
-                        <button class="edit-btn">Редактировать профиль</button>
-                        <button class="logoout-btn edit-btn">Выход</button>
+                        <p><span>Полное имя:</span><%=user.full_name%></p>
+                        <p><span>E-mail:</span><%=user.email%></p>
+                        <a class="edit-btn">Редактировать профиль</a>
+                        <a href="/api/signout/" class="logoout-btn edit-btn">Выход</a>
                     </div>
                 </div>
             </div>

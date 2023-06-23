@@ -1,8 +1,7 @@
 const passport = require('passport');
-const User = require('../auth/User');
 const bcrypt = require('bcrypt');
 const localStrategy = require('passport-local')
-
+const User = require('../auth/User')
 
 passport.use(new localStrategy(
     {

@@ -5,42 +5,42 @@ const Categories = require('../Categories/Categories');
 
 router.get('/', async(req, res)=>{
     const allCaregoties = await Categories.find()
-    res.render("index.ejs", {category: allCaregoties})
+    res.render("index.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
 }) 
 
 router.get('/login', (req, res)=>{
-    res.render("login.ejs")
+    res.render("login.ejs", {user: req.user ? req.user : {}})
 })
 
 router.get('/register', (req, res)=>{
-    res.render("register.ejs")
+    res.render("register.ejs", {user: req.user ? req.user : {}})
 })
 
-router.get('/profile', (req, res)=>{
-    res.render("profile.ejs")
+router.get('/profile/:id', (req, res)=>{
+    res.render("profile.ejs", {user: req.user ? req.user : {}})
 })
 
 router.get('/admin', (req, res)=>{
-    res.render("adminProfile.ejs")
+    res.render("adminProfile.ejs", {user: req.user ? req.user : {}})
 })
 
 router.get('/new', async(req, res)=>{
     const allCaregoties = await categories.find()
-    res.render("newBlog.ejs", {category: allCaregoties})
+    res.render("newBlog.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
 })
 
 router.get('/edit', async(req, res)=>{
     const allCaregoties = await categories.find()
-    res.render("editBlog.ejs", {category: allCaregoties})
+    res.render("editBlog.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
 })
 
 router.get('/detailPage', async(req, res)=>{
     const allCaregoties = await categories.find()
-    res.render("detailPage.ejs", {category: allCaregoties})
+    res.render("detailPage.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
 })
 
 router.get('/user', async(req, res)=>{
     const allCaregoties = await categories.find()
-    res.render("users.ejs", {category: allCaregoties})
+    res.render("users.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
 })
 module.exports = router;

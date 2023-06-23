@@ -94,10 +94,10 @@
             <img src="/images/avatar.png" alt="">
         </div>
         <div class="profile-info">
-            <p>Елнур Сеитжанов</p>
+            <p><%=user.full_name%></p>
             <p>В основном пишу про веб - разработку, на React & Redux</p>
-            <button class="edit-btn">Редактировать</button>
-            <button class="edit-btn logoout-btn">Выход</button>
+            <a class="edit-btn">Редактировать</a>
+            <a href="/api/signout/" class="edit-btn logoout-btn">Выход</a>
         </div>
     </div>
 </body>
