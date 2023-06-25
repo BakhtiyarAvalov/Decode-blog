@@ -12,8 +12,8 @@ require('./server/config/passport');
 app.use(express.static(__dirname + '/public'))
 app.use(express.urlencoded());
 app.use(session({
-    name: 'kinopoisk.session',
-    secret: 'keybord cat',
+    name: 'decode.session',
+    secret: 'keybord cat',   // желательно указать свои ключи, что бы его понимал только наш бэк энд
     maxAge: 1000 * 60 * 60 * 7,
     resave: false,
     store: mongooseStore.create({
@@ -29,6 +29,7 @@ app.set ("view engine", "ejs")
 app.use(require('./server/pages/router'))
 app.use(require('./server/Categories/router'))
 app.use(require('./server/auth/router'))
+app.use(require('./server/Blog/router'))
 
 const PORT = 8001;
 app.listen(PORT, () => {

@@ -8,7 +8,7 @@
     <%-include('partials/headerProfile.ejs')%>
     <div class="container">
         <div class="main">
-            <form action="" class="form">
+            <form action="/new" method="POST" class="form">
                 <h3>Новый блог</h3>
                 <fieldset class="fieldset">
                     <label for="">Название блога</label>
@@ -16,7 +16,7 @@
                 </fieldset>
                 <fieldset class="fieldset">
                     <label for="">Категория блога</label>
-                    <select name="" id="">
+                    <select name="category" id="">
                         <%category.forEach(categ =>{ %>
                             <option value=""><%=categ.name%></option>
                         <%})%>

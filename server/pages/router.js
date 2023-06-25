@@ -1,11 +1,14 @@
 const express = require('express');
 const router = express.Router();
-const categories = require('../Categories/Categories');
 const Categories = require('../Categories/Categories');
+const blog = require('../Blog/Blog');
+
+
 
 router.get('/', async(req, res)=>{
-    const allCaregoties = await Categories.find()
-    res.render("index.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
+    const allCaregories = await Categories.find()
+    const getAllBlog = await blog.find()
+    res.render("index.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 }) 
 
 router.get('/login', (req, res)=>{
@@ -16,8 +19,9 @@ router.get('/register', (req, res)=>{
     res.render("register.ejs", {user: req.user ? req.user : {}})
 })
 
-router.get('/profile/:id', (req, res)=>{
-    res.render("profile.ejs", {user: req.user ? req.user : {}})
+router.get('/profile/:id', async(req, res)=>{
+    const getAllBlog = await blog.find()
+    res.render("profile.ejs", {user: req.user ? req.user : {}, data: getAllBlog})
 })
 
 router.get('/admin', (req, res)=>{
@@ -25,22 +29,25 @@ router.get('/admin', (req, res)=>{
 })
 
 router.get('/new', async(req, res)=>{
-    const allCaregoties = await categories.find()
-    res.render("newBlog.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
+    const allCaregories = await Categories.find()
+    res.render("newBlog.ejs", {category: allCaregories, user: req.user ? req.user : {}})
 })
 
-router.get('/edit', async(req, res)=>{
-    const allCaregoties = await categories.find()
-    res.render("editBlog.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
+router.get('/edit/:id', async(req, res)=>{
+    const allCaregories = await Categories.find()
+    const blogData = await blog.findById(req.params.id)
+    res.render("editBlog.ejs", {category: allCaregories, user: req.user ? req.user : {}, data:blogData})
 })
 
 router.get('/detailPage', async(req, res)=>{
-    const allCaregoties = await categories.find()
-    res.render("detailPage.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
+    const allCaregories = await Categories.find()
+    const getAllBlog = await blog.find()
+    res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 })
 
 router.get('/user', async(req, res)=>{
-    const allCaregoties = await categories.find()
-    res.render("users.ejs", {category: allCaregoties, user: req.user ? req.user : {}})
+    const allCaregories = await Categories.find()
+    const getAllBlog = await blog.find()
+    res.render("users.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 })
 module.exports = router;

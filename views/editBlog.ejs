@@ -8,17 +8,18 @@
     <%-include('partials/header.ejs')%>
     <div class="container">
         <div class="main">
-            <form action="" class="form">
+            <form action="/edit/:id" method="POST" class="form">
+                <input type="hidden" name="id" value="<%=data._id%>">
                 <h3>Редактирование</h3>
                 <fieldset class="fieldset">
                     <label for="">Название блога</label>
-                    <input type="text" placeholder="Введите название блога" name="categori">
+                    <input type="text"  value="<%= data.titleBlog %>" name="titleBlog">
                 </fieldset>
                 <fieldset class="fieldset">
-                    <label for="">Название блога</label>
+                    <label for="">Категория блога</label>
                     <select name="" id="">
                         <%category.forEach(categ =>{ %>
-                            <option value=""><%=categ.name%></option>
+                            <option value="<%= data.category %>"><%=categ.name%></option>
                         <%})%>
                     </select>
                 </fieldset>
@@ -28,7 +29,7 @@
                 </fieldset>
                 <fieldset class="fieldset-img fieldset-img-last-child">
                     <label for="">Описание блога</label>
-                    <input type="text" placeholder="Введите описание блога" name="content">
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="content"><%=data.content%></textarea>
                 </fieldset>
                 <fieldset class="fieldset">  
                     <button type="submit">Сохранить</button>

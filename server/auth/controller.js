@@ -45,9 +45,14 @@ const signOut = (req, res) => {
     res.redirect('/');
 }
 
+function deleteItem(id) {
+    axios.delete(`/delete/${id}`).then(res => location.reload())
+}
+
 module.exports =
     {
         signUp,
         signIn,
-        signOut
+        signOut,
+        deleteItem,
     }

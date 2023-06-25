@@ -11,7 +11,20 @@
             <button class="head-search-btn">Найти</button>
         </div>
     </div>
+    <%
+    if(user._id){
+%>
     <div>
         <a href="/admin"><img src="/images/avatar.png" alt=""></a>
     </div>
+<%
+    }else{
+%>
+    <div class="head-buttons">
+        <a href="/register">Регистрация</a>
+        <a href="/login">Войти</a>
+    </div>
+<%
+    };
+%>
 </header>
