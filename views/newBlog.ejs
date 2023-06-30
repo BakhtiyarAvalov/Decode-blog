@@ -8,7 +8,7 @@
     <%-include('partials/headerProfile.ejs')%>
     <div class="container">
         <div class="main">
-            <form action="/new" method="POST" class="form">
+            <form action="/api/new" method="POST" class="form" enctype="multipart/form-data">
                 <h3>Новый блог</h3>
                 <fieldset class="fieldset">
                     <label for="">Название блога</label>
@@ -18,13 +18,13 @@
                     <label for="">Категория блога</label>
                     <select name="category" id="">
                         <%category.forEach(categ =>{ %>
-                            <option value=""><%=categ.name%></option>
+                            <option value="<%=categ._id%>"><%=categ.name%></option>
                         <%})%>
                     </select>
                 </fieldset>
                 <fieldset class="fieldset-img">
                     <label for="">Выберите картинку</label>
-                    <input type="file"  name="img">
+                    <input type="file"  name="image">
                 </fieldset>
                 <fieldset class="fieldset-img fieldset-img-last-child">
                     <label for="" >Описание блога</label>

@@ -18,9 +18,18 @@
                 <fieldset class="fieldset">
                     <label for="">Категория блога</label>
                     <select name="" id="">
-                        <%category.forEach(categ =>{ %>
-                            <option value="<%= data.category %>"><%=categ.name%></option>
-                        <%})%>
+                        <%
+                            category.forEach(categ =>{
+                                if(data.category == categ.name){
+                        %>
+                                <option selected value="<%= data.category %>"><%=categ.name%></option>
+                        <%
+                            }else{
+                        %>
+                                <option value="<%= data.category %>"><%=categ.name%></option>
+                        <%
+                            }
+                        })%>
                     </select>
                 </fieldset>
                 <fieldset class="fieldset-img">

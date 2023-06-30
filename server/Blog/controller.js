@@ -6,13 +6,17 @@ const getAllBlog = async(req , res) =>{
 }
 
 const newBlog = async(req , res) =>{
-    if(req.body.titleBlog.lenght != 0){
+    if(req.body.titleBlog.lenght != 0 &&
+        req.body.category.lenght != 0  &&
+        req.body.content.lenght != 0
+       ){
         await new Blog({
             titleBlog: req.body.titleBlog,
             category: req.body.category,
             content: req.body.content,
+            image: `${req.file.destination}/${req.file.filename}`
         }).save()
-        res.redirect(`/profile/:id`)
+        res.redirect(`/profile/${req.user._id}`)
     }else{
         res.redirect(`/new?error=1`)
     }
