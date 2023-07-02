@@ -7,7 +7,7 @@ const blog = require('../Blog/Blog');
 
 router.get('/', async(req, res)=>{
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find()
+    const getAllBlog = await blog.find().populate('category')
     res.render("index.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 }) 
 
@@ -20,7 +20,7 @@ router.get('/register', (req, res)=>{
 })
 
 router.get('/profile/:_id', async(req, res)=>{
-    const getAllBlog = await blog.find()
+    const getAllBlog = await blog.find().populate('category')
     res.render("profile.ejs", {user: req.user ? req.user : {}, data: getAllBlog})
 })
 
@@ -41,7 +41,7 @@ router.get('/edit/:id', async(req, res)=>{
 
 router.get('/detailPage', async(req, res)=>{
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find()
+    const getAllBlog = await blog.find().populate('category')
     res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 })
 
