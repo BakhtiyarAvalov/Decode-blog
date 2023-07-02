@@ -19,7 +19,7 @@ router.get('/register', (req, res)=>{
     res.render("register.ejs", {user: req.user ? req.user : {}})
 })
 
-router.get('/profile/:id', async(req, res)=>{
+router.get('/profile/:_id', async(req, res)=>{
     const getAllBlog = await blog.find()
     res.render("profile.ejs", {user: req.user ? req.user : {}, data: getAllBlog})
 })

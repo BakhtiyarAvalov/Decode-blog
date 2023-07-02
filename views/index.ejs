@@ -22,11 +22,11 @@
                 <div class="main-content-header">
                     <h1>Блоги по программированию</h1>
                     <p>Популярные и лучшие публикации по программированию для начинающих и профессиональных программистов и IT-специалистов.</p>
-                    <img src="/images/Manager.png" alt="">
                 </div>
                 <%
                     data.forEach(item =>{
                 %>
+                        <img src="<%= item.image %>" alt="">
                         <div class="main-report">
                             <h3><%=item.titleBlog%></h3>
                         </div>
@@ -48,7 +48,7 @@
                             </p>
                             <p>
                                 <img src="/images/icons/Path.png" alt="">
-                                Веб-разработка
+                                <%=item.category.name %>
                             </p>
                             <p>
                                 <img src="/images/icons/Vector.png" alt="">

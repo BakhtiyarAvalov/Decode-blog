@@ -14,7 +14,7 @@ const newBlog = async(req , res) =>{
             titleBlog: req.body.titleBlog,
             category: req.body.category,
             content: req.body.content,
-            image: `${req.file.destination}/${req.file.filename}`,
+            image: `/images/blogsImg/${req.file.filename}`,
             author: req.user._id
         }).save()
         res.redirect(`/profile/${req.user._id}`)

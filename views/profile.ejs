@@ -16,14 +16,13 @@
                             <a href="/new"><button>Новый блог</button></a>
                         </div>
                     </div>
-                    <img src="/images/Manager.png" alt="">
                 </div>
                 <% data.forEach(item =>{ %>
+                <img src="<%= item.image %>" alt="">
                 <div class="main-report">
                     <h3><%=item.titleBlog%></h3>
                     <div class="main-report-menu">
-                        <p>
-                            <img src="/images/icons/dot.png" alt="">
+                         <p>
                             Еще
                         </p>
                         <div class="main-report-btn">
@@ -48,7 +47,7 @@
                     </p>
                     <p>
                         <img src="/images/icons/Path.png" alt="">
-                        Веб-разработка
+                        <%= item.categ %>
                     </p>
                     <p>
                         <img src="/images/icons/Vector.png" alt="">
