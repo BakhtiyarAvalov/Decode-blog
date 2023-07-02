@@ -8,8 +8,10 @@
     <%-include('partials/header.ejs')%>
     <div class="container">
         <div class="main">
-            <form action="/edit/:id" method="POST" class="form">
-                <input type="hidden" name="id" value="<%=data._id%>">
+            <form action="/edit/:id" method="POST" enctype="multipart/form-data" class="form">
+                <fieldset>
+                    <input type="hidden" name="id" value="<%=data._id%>">
+                </fieldset>
                 <h3>Редактирование</h3>
                 <fieldset class="fieldset">
                     <label for="">Название блога</label>
@@ -17,19 +19,20 @@
                 </fieldset>
                 <fieldset class="fieldset">
                     <label for="">Категория блога</label>
-                    <select name="" id="">
+                    <select name="category" id="">
                         <%
                             category.forEach(categ =>{
-                                if(data.category == categ.name){
+                                if(data.category == categ.id){
                         %>
                                 <option selected value="<%= data.category %>"><%=categ.name%></option>
                         <%
-                            }else{
+                                }else{
                         %>
                                 <option value="<%= data.category %>"><%=categ.name%></option>
                         <%
-                            }
-                        })%>
+                               }
+                            })
+                        %>
                     </select>
                 </fieldset>
                 <fieldset class="fieldset-img">

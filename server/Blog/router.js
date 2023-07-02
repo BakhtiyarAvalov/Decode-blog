@@ -10,8 +10,8 @@ const writeDataBlog = require('./seed');
 writeDataBlog()
 
 router.get('/api/blog', getAllBlog);
-router.post('/api/new' , isAuth ,upload.single('image'), newBlog);
-router.post(`/edit/:id`, editBlog);
-router.delete('/delete/:id', deleteBlog);
+router.post('/api/new' , isAuth , upload.single('image'), newBlog);
+router.post(`/edit/:id`, isAuth, upload.single('image'), editBlog);
+router.delete('/delete/:id', isAuth, deleteBlog);
 
 module.exports = router;

@@ -24,21 +24,27 @@ const newBlog = async(req , res) =>{
 };
 
 const editBlog = async(req, res) => {
-    await Blog.updateOne(
-        {
-            _id: req.body.id
-        },
-        {
-            titleBlog: req.body.titleBlog,
-            category: req.body.category,
-            content: req.body.content,
+    if(req.body.titleBlog.lenght != 0 &&
+        req.body.category.lenght != 0  &&
+        req.body.content.lenght != 0
+       ){
+            await Blog.updateOne(
+                {
+                    id: req.body.id
+                },
+                {
+                    titleBlog: req.body.titleBlog,
+                    category: req.body.category,
+                    content: req.body.content,
+                }
+            )
+        }else{
+             res.redirect(`/edit/${req.body.id}?error=1`)
         }
-    )
-    res.redirect("/profile/:id")
 };
 
 const deleteBlog = async(req, res)=>{
-    await Blog.deleteOne({id: req.params.id})
+    await Blog.deleteOne({_id: req.params.id})
     res.status(200).send('ok')
 }
 

@@ -7,7 +7,7 @@ const blog = require('../Blog/Blog');
 
 router.get('/', async(req, res)=>{
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find().populate('category')
+    const getAllBlog = await blog.find().populate('category').populate('author')
     res.render("index.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 }) 
 
@@ -19,8 +19,8 @@ router.get('/register', (req, res)=>{
     res.render("register.ejs", {user: req.user ? req.user : {}})
 })
 
-router.get('/profile/:_id', async(req, res)=>{
-    const getAllBlog = await blog.find().populate('category')
+router.get('/profile/:id', async(req, res)=>{
+    const getAllBlog = await blog.find().populate('category').populate('author')
     res.render("profile.ejs", {user: req.user ? req.user : {}, data: getAllBlog})
 })
 
@@ -36,12 +36,12 @@ router.get('/new', async(req, res)=>{
 router.get('/edit/:id', async(req, res)=>{
     const allCaregories = await Categories.find()
     const blogData = await blog.findById(req.params.id)
-    res.render("editBlog.ejs", {category: allCaregories, user: req.user ? req.user : {}, data:blogData})
+    res.render("editBlog.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: blogData})
 })
 
 router.get('/detailPage', async(req, res)=>{
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find().populate('category')
+    const getAllBlog = await blog.find().populate('category').populate('author')
     res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 })
 
