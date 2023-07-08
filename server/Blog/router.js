@@ -12,6 +12,6 @@ writeDataBlog()
 router.get('/api/blog', getAllBlog);
 router.post('/api/new' , isAuth , upload.single('image'), newBlog);
 router.post(`/edit/:id`, isAuth, upload.single('image'), editBlog);
-router.delete('/delete/:id', isAuth, deleteBlog);
+router.delete('/api/blog/:id', isAuth, deleteBlog);
 
 module.exports = router;

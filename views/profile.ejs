@@ -17,17 +17,20 @@
                         </div>
                     </div>
                 </div>
-                <% data.forEach(item =>{ %>
+                <% 
+                    data.forEach(item =>{
+                        if(item){
+                %>
                 <img src="<%= item.image %>" alt="">
                 <div class="main-report">
                     <h3><%=item.titleBlog%></h3>
                     <div class="main-report-menu">
-                         <p>
+                        <p>
                             Еще
                         </p>
                         <div class="main-report-btn">
                             <a href="/edit/<%=item._id%>"><button>Редактировать</button></a>
-                            <button onclick="deleteItem(`<%=item._id%>`)">Удалить</button>
+                            <a onclick="deleteBlog(`<%= item._id %>`, `<%= item.author._id %>`)"><button>Удалить</button></a>
                         </div>
                     </div>
                 </div>
@@ -51,10 +54,16 @@
                     </p>
                     <p>
                         <img src="/images/icons/Vector.png" alt="">
-                        Nast1289
+                        <%= item.author.full_name %>
                     </p>
                 </div>
-                <% }); %>
+                <% 
+                    }else{
+                %>
+                        <p>hello</p>
+                <%
+                    }}); 
+                %>
             </div>  
     <div class="profile categories">
         <h3>Профиль</h3>
@@ -68,5 +77,7 @@
             <a href="/api/signout/" class="edit-btn logoout-btn">Выход</a>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/deleteBlog.js"></script>
 </body>
 </html>

@@ -1,4 +1,7 @@
 const Blog = require('./Blog');
+const fs = require('fs');
+const path = require('path');
+
 
 const getAllBlog = async(req , res) =>{
     const data = await Blog.find()
@@ -6,7 +9,8 @@ const getAllBlog = async(req , res) =>{
 }
 
 const newBlog = async(req , res) =>{
-    if(req.body.titleBlog.lenght != 0 &&
+    if( req.file &&
+        req.body.titleBlog.lenght != 0 &&
         req.body.category.lenght != 0  &&
         req.body.content.lenght != 0
        ){
@@ -24,28 +28,41 @@ const newBlog = async(req , res) =>{
 };
 
 const editBlog = async(req, res) => {
-    if(req.body.titleBlog.lenght != 0 &&
+    if( req.file &&
+        req.body.titleBlog.lenght != 0 &&
         req.body.category.lenght != 0  &&
         req.body.content.lenght != 0
        ){
-            await Blog.updateOne(
-                {
-                    id: req.body.id
-                },
-                {
-                    titleBlog: req.body.titleBlog,
-                    category: req.body.category,
-                    content: req.body.content,
-                }
-            )
-        }else{
+            const blog = await Blog.findById(req.body.id)
+            fs.unlinkSync(path.join(__dirname + '../../../public/' + blog.image))
+            // blog.titleBlog = req.body.titleBlog,
+            // blog.category = req.body.category,
+            // blog.content = req.body.content,
+            // blog.image = `/images/blogsImg/${req.file.filename}`,
+            // blog.save() 
+            await Blog.findByIdAndUpdate(req.body.id, {
+                titleBlog: req.body.titleBlog,
+                category: req.body.category,
+                content: req.body.content,
+                image: `/images/blogsImg/${req.file.filename}`,
+                author: req.user._id,
+                
+            })  
+            res.redirect('/profile/' + req.user._id)  
+        } else{
              res.redirect(`/edit/${req.body.id}?error=1`)
         }
 };
 
 const deleteBlog = async(req, res)=>{
-    await Blog.deleteOne({_id: req.params.id})
-    res.status(200).send('ok')
+    const blog = await Blog.findById(req.params.id)
+    if(blog){
+        fs.unlinkSync(path.join(__dirname + '../../../public/' + blog.image))
+        await Blog.deleteOne({_id: req.params.id})
+        res.status(200).send('ok')
+    } else{
+        res.status(404).send('Not found')
+    }
 }
 
 module.exports = {
