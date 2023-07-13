@@ -46,14 +46,16 @@
 }
 .main-report-btn button{
     margin-top: 5px;
+    width: 100%;
 }
 .main-report-btn{
     position: absolute;
     display: none;
     flex-direction: column;
-    top: 45px;
+    border-radius: 5px;
+    top: 40px;
     z-index: 11;
-    border: 1px solid #00000034;
+    border: 2px solid #00000034;
 }
 .main-report-menu{
     position: relative;

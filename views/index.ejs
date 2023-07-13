@@ -7,17 +7,7 @@
 <body>
     <%-include('partials/header.ejs')%>
     <div class="container">
-        <div class="link">
-            <a href="/login">Логин</a>
-            <a href="/register">Регистрация</a>
-            <a href="/profile/:id">Профайл</a>
-            <a href="/admin">Админ</a>
-            <a href="/new">Новый блог</a>
-            <a href="/edit/:id">Редактирование блога</a>
-            <a href="/detailPage">Детальная страница</a>
-            <a href="/user">Пользователь</a>
-        </div>
-        <div class="main">
+          <div class="main">
             <div class="main-content">
                 <div class="main-content-header">
                     <h1>Блоги по программированию</h1>
@@ -53,7 +43,7 @@
                             </p>
                             <p>
                                 <img src="/images/icons/Vector.png" alt="">
-                                <%= item.author.full_name %>
+                                <a href="/profile/<%= item.author._id %>"><%= item.author.full_name %></a>
                             </p>
                         </div>
                 <% 

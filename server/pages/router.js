@@ -20,8 +20,9 @@ router.get('/register', (req, res)=>{
 })
 
 router.get('/profile/:id', async(req, res)=>{
-    const getAllBlog = await blog.find().populate('category').populate('author')
-    res.render("profile.ejs", {user: req.user ? req.user : {}, data: getAllBlog})
+    profileUser = req.params.id
+    const getAllBlog = await blog.find({author: profileUser}).populate('category').populate('author')
+    res.render("profile.ejs", {user: req.user ? req.user : {}, data: getAllBlog , profileUser})
 })
 
 router.get('/admin', (req, res)=>{
