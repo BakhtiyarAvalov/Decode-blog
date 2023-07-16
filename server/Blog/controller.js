@@ -46,7 +46,6 @@ const editBlog = async(req, res) => {
                 content: req.body.content,
                 image: `/images/blogsImg/${req.file.filename}`,
                 author: req.user._id,
-                
             })  
             res.redirect('/profile/' + req.user._id)  
         } else{

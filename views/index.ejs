@@ -18,7 +18,7 @@
                 %>
                         <img src="<%= item.image %>" alt="">
                         <div class="main-report">
-                            <h3><%=item.titleBlog%></h3>
+                            <a href="/detailPage/<%= item._id %>"><h3><%=item.titleBlog%></h3></a>
                         </div>
                         <p>Автор: <%= item.author.full_name %></p>
                         <p>
