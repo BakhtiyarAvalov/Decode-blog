@@ -14,40 +14,35 @@
                     <p>Популярные и лучшие публикации по программированию для начинающих и профессиональных программистов и IT-специалистов.</p>
                     <img src="/images/Manager.png" alt="">
                 </div>
-            <%
-                    data.forEach(item =>{
-            %>
-                    <div class="main-report">
-                        <h3><%=item.titleBlog%></h3>
-                    </div>
+                <img src="<%= data.image %>" alt="">
+                <div class="main-report">
+                    <h3><%= data.titleBlog %></h3>
+                </div>
+                <p>
+                    <%=data.content%>
+                </p>
+                <div class="main-content-items">
                     <p>
-                        <%=item.content%>
+                        <img src="/images/icons/calendar.png" alt="" srcset="">
+                        12.06.2023
                     </p>
-                    <div class="main-content-items">
-                        <p>
-                            <img src="/images/icons/calendar.png" alt="" srcset="">
-                            12.06.2023
-                        </p>
-                        <p>
-                            <img src="/images/icons/eye.png" alt="">
-                            21
-                        </p>
-                        <p>
-                            <img src="/images/icons/Shape.png" alt="">
-                            4
-                        </p>
-                        <p>
-                            <img src="/images/icons/Path.png" alt="">
-                            <%= item.category.name %>
-                        </p>
-                        <p>
-                            <img src="/images/icons/Vector.png" alt="">
-                            Nast1289
-                        </p>
-                    </div>
-            <% 
-                });
-            %>
+                    <p>
+                        <img src="/images/icons/eye.png" alt="">
+                        21
+                    </p>
+                    <p>
+                        <img src="/images/icons/Shape.png" alt="">
+                        4
+                    </p>
+                    <p>
+                        <img src="/images/icons/Path.png" alt="">
+                        <%= data.category.name %>
+                    </p>
+                    <p>
+                        <img src="/images/icons/Vector.png" alt="">
+                        <a href="/profile/<%= data.author._id %>"><%= data.author.full_name %></a>
+                    </p>
+                </div>
                 <div class="comment">
                     <h4>2 комментария</h4> 
                     <div class="comment-item">

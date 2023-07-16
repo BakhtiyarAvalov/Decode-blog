@@ -42,7 +42,7 @@ router.get('/edit/:id', async(req, res)=>{
 
 router.get('/detailPage/:id', async(req, res)=>{
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find().populate('category').populate('author')
+    const getAllBlog = await blog.findById(req.params.id).populate('category').populate('author')
     res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 })
 
