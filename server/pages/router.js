@@ -6,8 +6,14 @@ const blog = require('../Blog/Blog');
 
 
 router.get('/', async(req, res)=>{
+    console.log(req.query);
+    const options = {}
+    const categories = await Categories.findOne({key: req.query.category})
+    if(categories){
+      options.category = categories._id
+    }
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find().populate('category').populate('author')
+    const getAllBlog = await blog.find(options).populate('category').populate('author')
     res.render("index.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 }) 
 

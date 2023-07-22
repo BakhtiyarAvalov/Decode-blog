@@ -17,6 +17,23 @@
                 <img src="<%= data.image %>" alt="">
                 <div class="main-report">
                     <h3><%= data.titleBlog %></h3>
+                    <% 
+                        
+                         if(data.author.id == user.id){ 
+                    %>
+                            <div class="main-report-menu">
+                                <p>
+                                    Еще
+                                </p>
+                                <div class="main-report-btn">
+                                    <a href="/edit/<%=item._id%>"><button>Редактировать</button></a>
+                                    <a onclick="deleteBlog(`<%= item._id %>`, `<%= item.author._id %>`)"><button>Удалить</button></a>
+                                </div>
+                            </div>
+                    <% 
+                            };
+                    
+                    %>
                 </div>
                 <p>
                     <%=data.content%>

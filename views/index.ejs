@@ -53,7 +53,7 @@
             <div class="categories">
                 <h3>Категории</h3>
                 <%category.forEach(categ =>{ %>
-                    <a href="/<%=categ.key%>"><%=categ.name%></a>
+                    <a href="?category=<%=categ.key%>"><%=categ.name%></a>
                 <%})%>
             </div>
         </div>
