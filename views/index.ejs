@@ -49,6 +49,19 @@
                 <% 
                     });
                 %>
+                <div class="pages">
+                    <%
+                        let localsString = ''
+                        if(locals.category){
+                            localsString = `category=${locals.category}&`
+                        }
+                        for(let i = 0; i < pages; i++){
+                    %>
+                            <a href="?<%= localsString %> page=<%= i %>"><%= i + 1 %></a>
+                    <%
+                        }
+                    %>
+                </div>
             </div>  
             <div class="categories">
                 <h3>Категории</h3>
