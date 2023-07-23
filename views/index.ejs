@@ -18,7 +18,7 @@
                 %>
                         <img src="<%= item.image %>" alt="">
                         <div class="main-report">
-                            <a href="/detailPage/<%= item._id %>"><h3><%=item.titleBlog%></h3></a>
+                            <a href="/detailPage/<%= item._id %>" onclick="rateBlog()"><h3><%=item.titleBlog%></h3></a>
                         </div>
                         <p>Автор: <%= item.author.full_name %></p>
                         <p>
@@ -54,6 +54,9 @@
                         let localsString = ''
                         if(locals.category){
                             localsString = `category=${locals.category}&`
+                        }
+                        if(locals.search){
+                            localsString = `search=${locals.search}&`
                         }
                         for(let i = 0; i < pages; i++){
                     %>

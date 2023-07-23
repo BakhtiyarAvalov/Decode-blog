@@ -17,6 +17,17 @@ router.get('/', async(req, res)=>{
     if(req.query.page && req.query.page > 0){
         page = req.query.page
     }
+    if(req.query.search && req.query.search > 0){
+        options.$or = [
+            {
+                titleBlog: new RegExp(req.query.search, 'i')  
+            }, 
+            {
+                content: new RegExp(req.query.search, 'i')  
+            }
+        ]
+        res.locals.search = req.query.search
+    }
     const totalBlogs = await blog.count(options)
     const allCaregories = await Categories.find()
     const getAllBlog = await blog.find(options).limit(limit).skip(page * limit).populate('category').populate('author')
@@ -58,9 +69,4 @@ router.get('/detailPage/:id', async(req, res)=>{
     res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
 })
 
-router.get('/user', async(req, res)=>{
-    const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find()
-    res.render("users.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
-})
 module.exports = router;

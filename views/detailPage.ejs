@@ -72,9 +72,22 @@
                         Сейтжанов Елнур
                     </div>
                     <p>В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.</p>
-                    <div class="registration-link">
-                        <p>Чтобы оставить комментарий <a href="/register">зарегистрируйтесь</a>, или <a href="/login">войдите</a> в аккаунт.</p>
-                    </div>
+                    <%
+                        if(user && user._id){
+                    %>
+                            <div class="comment-input">
+                                <input type="text" placeholder="Введи текст комментария">
+                            </div>
+                            <button id="comment-button">Отправить</button>
+                    <%
+                        }else{
+                    %>      
+                            <div class="registration-link">
+                                <p>Чтобы оставить комментарий <a href="/register">зарегистрируйтесь</a>, или <a href="/login">войдите</a> в аккаунт.</p>
+                            </div>
+                    <%
+                        }
+                    %>
                 </div>
             </div>   
             <div class="categories">
