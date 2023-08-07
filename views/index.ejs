@@ -22,7 +22,8 @@
                         </div>
                         <p>Автор: <%= item.author.full_name %></p>
                         <p>
-                            <%=item.content%>
+                            <pre><%- item.content.replace(/\n/g, '<br>') %></pre>
+                            <!-- <%=item.content%> -->
                         </p>
                         <div class="main-content-items">
                             <p>
@@ -52,15 +53,18 @@
                 <div class="pages">
                     <%
                         let localsString = ''
-                        if(locals.category){
-                            localsString = `category=${locals.category}&`
+                        console.log(localsString)
+
+                        if(locals.categories){
+                            localsString = `category=${locals.categories}&`
                         }
                         if(locals.search){
                             localsString = `search=${locals.search}&`
                         }
                         for(let i = 0; i < pages; i++){
                     %>
-                            <a href="?<%= localsString %> page=<%= i %>"><%= i + 1 %></a>
+                            
+                            <a href="?<%= localsString %>page=<%= i %>"><%= i + 1 %></a>
                     <%
                         }
                     %>

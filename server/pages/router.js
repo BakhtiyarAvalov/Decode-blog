@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Categories = require('../Categories/Categories');
 const blog = require('../Blog/Blog');
+const Comment = require('../Comments/Comment');
 
 
 
@@ -10,14 +11,14 @@ router.get('/', async(req, res)=>{
     const categories = await Categories.findOne({key: req.query.category})
     if(categories){
       options.category = categories._id
-      res.locals.category = req.query.category
+      res.locals.categories = req.query.category
     }
     let page = 0
     const limit = 3
     if(req.query.page && req.query.page > 0){
         page = req.query.page
     }
-    if(req.query.search && req.query.search > 0){
+    if(req.query.search && req.query.search.length > 0){
         options.$or = [
             {
                 titleBlog: new RegExp(req.query.search, 'i')  
@@ -30,7 +31,7 @@ router.get('/', async(req, res)=>{
     }
     const totalBlogs = await blog.count(options)
     const allCaregories = await Categories.find()
-    const getAllBlog = await blog.find(options).limit(limit).skip(page * limit).populate('category').populate('author')
+    const getAllBlog = await blog.find(options).sort({ _id: -1 }).limit(limit).skip(page * limit).populate('category').populate('author')
     res.render("index.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog, pages: Math.ceil(totalBlogs / limit)})
 }) 
 
@@ -64,9 +65,11 @@ router.get('/edit/:id', async(req, res)=>{
 })
 
 router.get('/detailPage/:id', async(req, res)=>{
+    const comment = await Comment.find({blogId: req.params.id})
+
     const allCaregories = await Categories.find()
     const getAllBlog = await blog.findById(req.params.id).populate('category').populate('author')
-    res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog})
+    res.render("detailPage.ejs", {category: allCaregories, user: req.user ? req.user : {}, data: getAllBlog, comment: comment})
 })
 
 module.exports = router;

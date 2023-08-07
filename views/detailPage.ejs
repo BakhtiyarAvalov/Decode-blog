@@ -12,7 +12,7 @@
                 <div class="main-content-header">
                     <h1>Блоги по программированию</h1>
                     <p>Популярные и лучшие публикации по программированию для начинающих и профессиональных программистов и IT-специалистов.</p>
-                    <img src="/images/Manager.png" alt="">
+                    <img src="/images/avatar.png" alt="">
                 </div>
                 <img src="<%= data.image %>" alt="">
                 <div class="main-report">
@@ -26,8 +26,8 @@
                                     Еще
                                 </p>
                                 <div class="main-report-btn">
-                                    <a href="/edit/<%=item._id%>"><button>Редактировать</button></a>
-                                    <a onclick="deleteBlog(`<%= item._id %>`, `<%= item.author._id %>`)"><button>Удалить</button></a>
+                                    <a href="/edit/<%=data._id%>"><button>Редактировать</button></a>
+                                    <a ><button onclick="deleteBlog(`<%= data._id %>`, `<%= data.author._id %>`)" type="submit">Удалить</button></a>
                                 </div>
                             </div>
                     <% 
@@ -60,25 +60,17 @@
                         <a href="/profile/<%= data.author._id %>"><%= data.author.full_name %></a>
                     </p>
                 </div>
-                <div class="comment">
-                    <h4>2 комментария</h4> 
-                    <div class="comment-item">
-                        <img src="/images/avatar.png" alt="">
-                        Сейтжанов Елнур
-                    </div>
-                    <p>В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.</p>
-                    <div class="comment-item">
-                        <img src="/images/avatar.png" alt="">
-                        Сейтжанов Елнур
-                    </div>
-                    <p>В отличие от обычных виджетов пользовательского интерфейса JavaScript, комплексные виджеты - это полноценные приложения, которые не требуют дополнительной настройки и кастомизации.</p>
-                    <%
+                <%
                         if(user && user._id){
                     %>
+                        <form onSubmit="sendComment(event)">
+                            <input type="hidden" value="<%= user._id %>"  id="comment_author"> 
+                            <input type="hidden" value="<%= data._id %>" id="comment_blog">     
                             <div class="comment-input">
-                                <input type="text" placeholder="Введи текст комментария">
+                                <textarea id="comment-text" placeholder="Введи текст комментария"></textarea>
                             </div>
-                            <button id="comment-button">Отправить</button>
+                            <button type="submit" id="comment-button">Отправить</button>
+                        </form>
                     <%
                         }else{
                     %>      
@@ -86,6 +78,22 @@
                                 <p>Чтобы оставить комментарий <a href="/register">зарегистрируйтесь</a>, или <a href="/login">войдите</a> в аккаунт.</p>
                             </div>
                     <%
+                        }
+                    %>
+                    <%
+                        if(comments){
+                            comments.forEach(comment =>{ 
+                    %>
+                                <div class="comment">
+                                    <h4><%=  %> комментария</h4> 
+                                    <div class="comment-item">
+                                        <img src="/images/avatar.png" alt="">
+                                       <p> Автор: <%= comment.authorId.full_name %> </p>
+                                    </div>
+                                    <p><%= comment.text %></p>
+                                </div> 
+                    <%
+                            })
                         }
                     %>
                 </div>
@@ -98,5 +106,8 @@
             </div>
         </div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.4.0/axios.min.js" integrity="sha512-uMtXmF28A2Ab/JJO2t/vYhlaa/3ahUOgj1Zf27M5rOo8/+fcTUVH0/E0ll68njmjrLqOBjXM3V9NiPFL5ywWPQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="/js/commentBlog.js"></script>
+    <script src="/js/deleteBlog.js"></script>
 </body>
 </html>

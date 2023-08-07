@@ -1,4 +1,4 @@
-function deleteBlog(id, authorID) {
+function deleteBlog(id, authorId) {
     axios.delete(`/api/blog/${id}`).then(data =>{
         if(data.status == 200){
             location.replace(`/profile/${authorID}`)
